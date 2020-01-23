@@ -12,12 +12,13 @@ from cariboo import MneRawSource
 def test_mne_raw_source():
 
     #reader = neo.MicromedIO(filename='File_micromed_1.TRC')
-    vhdr_fname = './cariboo/test/signals/suj_0006_EEGAnna.vhdr'
+    vhdr_fname = 'small_BrainAmp.vhdr'
     raw = mne.io.read_raw_brainvision(vhdr_fname, montage='standard_1020',  eog = ['EOG'], preload=True,)
     # raw.set_montage
-    croped_raw = raw.crop(0, 10)
+    
+    #~ raw = raw.crop(0, 10)
 
-    source = MneRawSource(croped_raw)
+    source = MneRawSource(raw)
 
     #you must first create a main Qt application (for event loop)
     app = mkQApp()
